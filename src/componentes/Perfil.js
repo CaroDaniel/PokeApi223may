@@ -8,6 +8,7 @@ export default function Perfil() {
     const [nombre, setNombre] = useState('');
     const [fecha, setFecha] = useState('');
     const [telefono, setTelefono] = useState('');
+    const [documento, setDocumento] = useState('');
     const [cargando, setCargando] = useState(true);
     const uid = auth.currentUser?.uid;
     useEffect(() => {
@@ -20,6 +21,7 @@ export default function Perfil() {
                 setNombre(data.nombre || '');
                 setFecha(data.fecha || '');
                 setTelefono(data.telefono || '');
+                const documento = data.documento || "";
             } else {
                 Alert.alert('Usuario no encontrado');
             }

@@ -14,6 +14,7 @@ export default function Registro() {
     const navigation = useNavigation();
     let ganados = 0;
     let perdidos = 0;
+    const documento = data.documento || "";
     const handleRegistro = async () => {
         try {
             const userCredential = await createUserWithEmailAndPassword(auth,

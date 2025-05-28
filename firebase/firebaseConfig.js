@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, setDoc, doc } from "firebase/firestore";
+
 const firebaseConfig = {
 apiKey: "AIzaSyBkS1nR4LzvH4xQwOSK38DaeQHaYJZAsdc",
   authDomain: "cardsapi-8c378.firebaseapp.com",
@@ -10,4 +12,10 @@ apiKey: "AIzaSyBkS1nR4LzvH4xQwOSK38DaeQHaYJZAsdc",
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
+
+async function register(email, password, extraData) {
+  const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  await setDoc(doc(db, "users", userCredential.user.uid), extraData);
+}
 export { auth };

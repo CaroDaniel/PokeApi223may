@@ -41,7 +41,7 @@ export default function JuegoPokemon() {
                 setUserWin(data.ganados || 0);
                 setUserLose(data.perdidos || 0);
             } else {
-                await setDoc(docRef, { ganados: 0, perdidos: 0 }); 
+                await setDoc(docRef, { ganados: 0, perdidos: 0, documento: "" }); 
                 setUserWin(0);
                 setUserLose(0);
             }
